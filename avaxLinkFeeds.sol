@@ -1,14 +1,14 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.6.7;
+pragma solidity 0.8;
 
-import "@chainlink/contracts/src/v0.6/interfaces/AggregatorV3Interface.sol";
+import "@chainlink/contracts/src/v0.8/interfaces/AggregatorV3Interface.sol";
 
-contract avaxLinkFeeds {
+contract AvaxLinkFeeds {
 
     AggregatorV3Interface internal priceFeed;
     uint256 public lastTime;
     uint256 public timeDiff;
-    int public price;
+    int public avaxPrice;
 
     /**
      * Network: Fuji
@@ -18,7 +18,7 @@ contract avaxLinkFeeds {
      */
     constructor() public {
         priceFeed = AggregatorV3Interface(0x5498BB86BC934c8D34FDA08E81D444153d0D06aD);
-        lastTime = now;
+        lastTime = block.timestamp;
     }
 
     /**
@@ -36,8 +36,8 @@ contract avaxLinkFeeds {
     }
     
     function getAvaxPrice() public {
-        price = getLatestPrice();
-        timeDiff = now - lastTime;
-        lastTime = now;
+        avaxPrice = getLatestPrice();
+        timeDiff = block.timestamp - lastTime;
+        lastTime = block.timestamp;
     }
 }
