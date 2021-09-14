@@ -3,7 +3,7 @@ Using Chainlink Price Feeds on Avalanche
 
 See accompanying article for instructions: TBD
 
-In remix:
+In remix:  
 -Compile  
 -Set Metamask Custom RPC network to:  
 Network Name: Avalanche FUJI C-Chain  
